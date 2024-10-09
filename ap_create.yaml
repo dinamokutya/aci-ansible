@@ -4,6 +4,7 @@
   gather_facts: False
   ignore_errors: yes
 
+  vars:
     login_info: &login_info
       host: "{{ inventory_hostname }}"
       username: "{{ username }}"
