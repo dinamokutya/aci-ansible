@@ -5,10 +5,7 @@
   ignore_errors: yes
 
   vars:
-    login_info: &login_info
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
+
       validate_certs: false
 
 
@@ -16,7 +13,7 @@
   tasks:
     - name: Add a new AP
       cisco.aci.aci_ap:
-        <<: *login_info
+        validate_certs: false
         tenant: "TN-ANDRAS"
         ap: "AP-SEMAPHOREUI1"
         description: default ap
