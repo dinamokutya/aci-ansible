@@ -1,1 +1,24 @@
-aaa
+---
+- hosts: apic
+  connection: local
+  gather_facts: False
+  ignore_errors: yes
+
+    login_info: &login_info
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      validate_certs: false
+
+
+
+  tasks:
+    - name: Add a new AP
+      cisco.aci.aci_ap:
+        <<: *login_info
+        tenant: "TN-ANDRAS"
+        ap: "AP-SEMAPHOREUI1"
+        description: default ap
+        monitoring_policy: default
+        state: present
+      delegate_to: localhost
